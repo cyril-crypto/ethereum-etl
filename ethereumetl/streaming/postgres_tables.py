@@ -68,7 +68,6 @@ TRANSACTIONS = Table(
     Column('receipt_status', BigInteger),
     Column('block_timestamp', TIMESTAMP),
     Column('block_number', BigInteger),
-    Column('block_hash', String),
     Column('max_fee_per_gas', BigInteger),
     Column('max_priority_fee_per_gas', BigInteger),
     Column('transaction_type', BigInteger),
