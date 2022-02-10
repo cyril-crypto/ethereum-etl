@@ -52,6 +52,7 @@ BLOCKS = Table(
 TRANSACTIONS = Table(
     'transactions', metadata,
     Column('hash', String, primary_key=True),
+    Column('block_hash', String, primary_key=True),
     Column('nonce', BigInteger),
     Column('transaction_index', BigInteger),
     Column('from_address', String),
