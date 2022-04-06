@@ -45,8 +45,9 @@ class EthBlockMapper(object):
         block.state_root = json_dict.get('stateRoot')
         block.receipts_root = json_dict.get('receiptsRoot')
         block.miner = to_normalized_address(json_dict.get('miner'))
-        block.difficulty = hex_to_dec(json_dict.get('difficulty'))
-        block.total_difficulty = hex_to_dec(json_dict.get('totalDifficulty'))
+        # block difficulty in Kovan could exceed 10^38
+        block.difficulty = min(hex_to_dec(json_dict.get('difficulty')), 9999999999999999999999999999999999999)
+        block.total_difficulty = min(hex_to_dec(json_dict.get('totalDifficulty')), 9999999999999999999999999999999999999)
         block.size = hex_to_dec(json_dict.get('size'))
         block.extra_data = json_dict.get('extraData')
         block.gas_limit = hex_to_dec(json_dict.get('gasLimit'))
