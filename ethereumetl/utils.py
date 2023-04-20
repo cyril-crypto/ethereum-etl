@@ -68,7 +68,10 @@ def validate_range(range_start_incl, range_end_incl):
 
 def rpc_response_batch_to_results(response):
     for response_item in response:
-        yield rpc_response_to_result(response_item)
+        try:
+            yield rpc_response_to_result(response_item)
+        except RetriableValueError:
+            print("rpc_response_batch_to_results. response_item: %s", response_item)
 
 
 def rpc_response_to_result(response):
